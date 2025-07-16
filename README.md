@@ -43,16 +43,10 @@ pip (Python package installer)
 A running MySQL server instance
 
 Installation & Setup
-Clone the repository (or create the files):
+Clone the repository:
 
 git clone https://your-repository-url.git
 cd todo-fastapi-app
-
-Or, if you haven't used Git, simply create the setup.py file and run it.
-
-Run the setup script (optional, if you haven't created the files manually):
-
-python setup.py
 
 Create and activate a virtual environment:
 
@@ -65,12 +59,11 @@ python -m venv venv
 .\venv\Scripts\activate
 
 Install dependencies:
-First, add the required libraries to requirements.txt, then run:
 
 pip install -r requirements.txt
 
 Configure the database:
-Update the SQLALCHEMY_DATABASE_URL in app/database.py with your MySQL connection details.
+Update the variables in your .env file with your MySQL connection details.
 
 Run the application:
 
