@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro To-Do App | FastAPI</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to the new CSS stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+</head>
+<body>
+
+    <main class="app-container">
+        <div class="todo-card">
+            <header class="card-header">
+                <div class="header-content">
+                    <h1>Today's Tasks</h1>
+                    <p>Wednesday, 16 July</p>
+                </div>
+                <div class="header-icon">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+            </header>
+
+            <section class="add-task-section">
+                <form action="/add" method="post" class="add-task-form">
+                    <input type="text" name="title" placeholder="Add a new task title..." required autocomplete="off">
+                    <input type="text" name="description" placeholder="Description (optional)" autocomplete="off">
+                    <button type="submit" aria-label="Add Task"><i class="fa-solid fa-plus"></i></button>
+                </form>
+            </section>
+
+            <section class="task-list-section">
+                <ul class="task-list">
+                    {% for todo in todos %}
+                    <li class="task-item {% if todo.completed %}completed{% endif %}">
+                        <a href="/toggle/{{ todo.id }}" class="task-check-btn" aria-label="Toggle task completion">
+                            <i class="fa-regular fa-circle"></i>
+                            <i class="fa-solid fa-circle-check"></i>
+                        </a>
+                        <div class="task-details">
+                            <span class="task-title">{{ todo.title }}</span>
+                            {% if todo.description %}
+                                <p class="task-description">{{ todo.description }}</p>
+                            {% endif %}
+                        </div>
+                        <a href="/delete/{{ todo.id }}" class="task-delete-btn" aria-label="Delete task">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="no-tasks">
+                        <i class="fa-solid fa-inbox"></i>
+                        <p>Your task list is empty.</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Link to the new JavaScript file -->
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html>

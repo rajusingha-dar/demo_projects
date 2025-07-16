@@ -1,0 +1,198 @@
+/* --- Base & Typography --- */
+:root {
+    --primary-color: #4a90e2;
+    --primary-hover: #357ABD;
+    --background-color: #f0f4f8;
+    --card-background: #ffffff;
+    --text-primary: #333;
+    --text-secondary: #777;
+    --border-color: #e0e0e0;
+    --success-color: #50e3c2;
+    --danger-color: #e57373;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Main App Container --- */
+.app-container {
+    width: 100%;
+    max-width: 550px;
+}
+
+.todo-card {
+    background: var(--card-background);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+}
+
+/* --- Card Header --- */
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color), #5a9eee);
+    color: white;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+.card-header p {
+    margin: 4px 0 0;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+.header-icon i {
+    font-size: 3em;
+    opacity: 0.2;
+    transform: rotate(-10deg);
+}
+
+/* --- Add Task Form --- */
+.add-task-section {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+.add-task-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.add-task-form input {
+    width: 100%;
+    border: 1px solid transparent;
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-family: var(--font-family);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+.add-task-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+.add-task-form button {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.add-task-form button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.1);
+}
+
+/* --- Task List --- */
+.task-list-section {
+    padding: 10px 30px 20px;
+}
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 5px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+.task-item:last-child {
+    border-bottom: none;
+}
+.task-item .task-details {
+    margin: 0 15px;
+    flex-grow: 1;
+}
+.task-title {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.task-description {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin: 2px 0 0;
+}
+
+/* Task Item States (Completed) */
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+.task-item.completed .task-check-btn .fa-circle-check {
+    opacity: 1;
+    transform: scale(1);
+}
+.task-item.completed .task-check-btn .fa-circle {
+    opacity: 0;
+}
+
+/* Task Action Buttons */
+.task-check-btn {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.task-check-btn .fa-circle, .task-check-btn .fa-circle-check {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+.task-check-btn .fa-circle-check {
+    opacity: 0;
+    transform: scale(0.5);
+    color: var(--success-color);
+}
+.task-delete-btn {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+.task-item:hover .task-delete-btn {
+    opacity: 1;
+    color: var(--danger-color);
+    transform: scale(1.1);
+}
+
+/* No Tasks View */
+.no-tasks {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+.no-tasks i {
+    font-size: 3em;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}

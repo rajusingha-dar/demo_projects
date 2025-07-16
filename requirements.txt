@@ -1,0 +1,16 @@
+# FastAPI and Server
+fastapi
+uvicorn[standard]
+
+# Database
+sqlalchemy
+mysql-connector-python
+
+# Templating
+jinja2
+
+# Data Validation (core part of FastAPI, but good to list)
+pydantic
+
+# For HTML form handling
+python-multipart
